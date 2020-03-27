@@ -1,28 +1,26 @@
 import { makeStyles } from "@material-ui/core";
+import imgBg from '../../assets/img/login.jpg'
 
 export default makeStyles(Theme => ({
   container: {
     width: "100vw",
     height: "100vh",
-    backgroundColor: Theme.palette.secondary.dark,
+    backgroundImage: `url(${imgBg})`,
+    backgroundSize: 'cover',
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "flex-end",
     alignItems: "center"
   },
   divForm: {
     width: "500px",
+    height: "100vh",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    backgroundColor: Theme.palette.secondary.light,
-    borderRadius: 20,
-    padding: '3rem 2rem',
-    boxShadow: '0px 8px 12px 0 rgba(0, 0, 0, 0.2)',
-
-    [Theme.breakpoints.down('sm')]: {
-      borderRadius: 0,
-      backgroundColor: Theme.palette.secondary.light,
-    }
+    justifyContent: "center",
+    backgroundColor: 'white',
+    padding: '4rem',
+    boxShadow: '0px 8px 12px 0 rgba(0, 0, 0, 0.2)'
   },
   flex: {
     width: "100%",

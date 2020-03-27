@@ -35,13 +35,13 @@ export default {
   },
   MuiInputBase: {
     input: {
-      color: palette.text.white
+      //color: palette.text.white
     }
   },
   MuiInput: {
     underline: {
       "&:hover:not(.Mui-disabled):before": {
-        borderBottom: '1px solid white'
+        borderBottom: `1px solid ${palette.primary.light}`
       }
     }
   }

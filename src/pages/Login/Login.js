@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import swal from "sweetalert";
+import swal from "sweetalert";
 
 // Material UI
 import { InputAdornment } from "@material-ui/core";
@@ -42,7 +42,6 @@ const Login = () => {
               </InputAdornment>
             )
           }}
-          variant='outlined'
         />
         <Input
           type="password"
@@ -58,14 +57,13 @@ const Login = () => {
             )
           }}
           inputProps={{ maxLength: 16 }}
-          variant='outlined'
         />
         <div className={classes.flex}>
           <Link to="/olvidaste-tu-clave" className={classes.link}>
             ¿Olvidaste tu contraseña?
           </Link>
         </div>
-        <Button color="primary" className={classes.button} onClick={() => console.log('Press')}>
+        <Button color="primary" className={classes.button} onClick={() => swal('Press')}>
           Iniciar Sesión
         </Button>
       </div>
