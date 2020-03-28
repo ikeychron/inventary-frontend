@@ -1,10 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import classnames from "classnames";
 import { Button as ButtonBase } from "@material-ui/core";
 
 // Styles
-import styles from './styles'
+import styles from "./styles";
 
 const Button = ({
   type,
@@ -12,7 +11,6 @@ const Button = ({
   children,
   disabled,
   onClick,
-  to,
   ...rest
 }) => {
   const classes = styles();
@@ -22,21 +20,13 @@ const Button = ({
     [className]: !!className
   });
 
-  const renderLink = classNames => (
-    <Link className={classNames} to={to}>
-      {children}
-    </Link>
-  );
-
-  return to ? (
-    renderLink(classNames)
-  ) : (
+  return (
     <ButtonBase
       type={type}
       className={classNames}
       disabled={disabled}
       onClick={!disabled ? onClick : () => {}}
-      variant='contained'
+      variant="contained"
       {...rest}
     >
       {children}
@@ -46,6 +36,6 @@ const Button = ({
 
 Button.defaultProps = {
   disabled: false
-}
+};
 
 export default Button;

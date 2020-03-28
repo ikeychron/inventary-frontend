@@ -28,7 +28,7 @@ const Link = ({
         className={classNames}
         {...rest}
         style={{ fontWeight: 500 }}
-        activeStyle={{ color: "#49CC66", fontWeight: "bold" }}
+        activeStyle={{ color: "0083df", fontWeight: "bold" }}
       >
         {children}
       </RouteLink>

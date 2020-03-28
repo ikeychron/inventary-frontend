@@ -1,12 +1,12 @@
 export default {
   primary: {
-    light: "#00d9c9",
     main: "#00a8e9",
     dark: "#0083df",
     ultraDark: "#105bbc"
   },
   secondary: {
-    main: '#6eff91'
+    main: "#9cadbc",
+    dark: "#384955"
   },
   success: { main: "#4caf50" },
   warning: { main: "#ff9800" },

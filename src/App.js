@@ -9,6 +9,7 @@ import theme from "./theme";
 
 // Pages
 import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 
 const App = () => {
   return (
@@ -16,7 +17,8 @@ const App = () => {
       <ThemeProvider theme={theme}>
           <CssBaseline />
           <Switch>
-            <Route exact path="/" component={Login} />
+            <Route exact path="/" component={SignUp} />
+            <Route exact path="/iniciar-sesion" component={Login} />
             <Redirect to="/" />
           </Switch>
       </ThemeProvider>
