@@ -8,8 +8,7 @@ export default makeStyles(Theme => ({
     backgroundColor: "transparent",
     outline: "none",
     border: "none",
-    width: "100%",
-
+    
     "&:focus": {
       borderColor: Theme.palette.primary.main
     }

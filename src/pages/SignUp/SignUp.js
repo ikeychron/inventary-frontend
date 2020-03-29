@@ -6,6 +6,7 @@ import Text from "../../components/Atoms/Text";
 import Button from "../../components/Atoms/Button";
 import Link from "../../components/Atoms/Link";
 import Input from "../../components/Atoms/Input";
+import GridFluid from "../../components/Atoms/GridFluid";
 
 // Styles
 import styles from "./styles.js";
@@ -20,7 +21,7 @@ const SignUp = () => {
       <Text component="h1" theme="title" className={classes.title}>
         Registrar Usuario
       </Text>
-      <div className={classes.grid}>
+      <GridFluid className={classes.grid}>
         <Input
           type="text"
           className={classes.input}
@@ -61,7 +62,7 @@ const SignUp = () => {
           placeholder="Confirmar contraseña"
           inputProps={{ maxLength: 30 }}
         />
-      </div>
+      </GridFluid>
       <Link to="/iniciar-sesion" className={classes.button} color="secondary">
         Cancelar
       </Link>

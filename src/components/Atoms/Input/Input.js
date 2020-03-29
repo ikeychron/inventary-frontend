@@ -21,7 +21,6 @@ const Input = ({ type, value, onChange, className, disabled, ...rest }) => {
   };
 
   const classNames = classnames({
-    [classes.disabled]: disabled,
     [classes.default]: true,
     [className]: !!className
   });

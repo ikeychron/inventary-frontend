@@ -10,18 +10,8 @@ export default makeStyles(Theme => ({
     backgroundColor: "white",
     padding: "4rem",
   },
-  flex: {
-    width: "100%",
-    display: "flex",
-    justifyContent: "flex-end"
-  },
   img: {
     width: "120px"
-  },
-  grid: {
-    display: "flex",
-    flexDirection: "column",
-    flexBasis: "50%"
   },
   title: {
     fontSize: "40px",
@@ -32,7 +22,9 @@ export default makeStyles(Theme => ({
     marginRight: "10px"
   },
   input: {
-    marginTop: "1rem"
+    margin: "1.5rem 1rem",
+    flexBasis: '40%',
+    flex: 1
   },
   button: {
     marginTop: "20px",

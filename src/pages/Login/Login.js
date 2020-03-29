@@ -42,6 +42,7 @@ const Login = () => {
               </InputAdornment>
             )
           }}
+          fullWidth
         />
         <Input
           type="password"
@@ -57,6 +58,7 @@ const Login = () => {
             )
           }}
           inputProps={{ maxLength: 16 }}
+          fullWidth
         />
         <div className={classes.flex}>
           <Link to="/olvidaste-tu-clave" className={classes.link}>
