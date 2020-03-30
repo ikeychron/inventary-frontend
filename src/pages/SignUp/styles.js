@@ -8,7 +8,7 @@ export default makeStyles(Theme => ({
     flexDirection: "column",
     alignItems: "center",
     backgroundColor: "white",
-    padding: "4rem",
+    padding: "4rem"
   },
   img: {
     width: "120px"
@@ -16,15 +16,27 @@ export default makeStyles(Theme => ({
   title: {
     fontSize: "40px",
     marginTop: ".6rem",
-    marginBottom: 0
+    marginBottom: 0,
+    textAlign: "center"
   },
   link: {
     marginRight: "10px"
   },
   input: {
     margin: "1.5rem 1rem",
-    flexBasis: '40%',
-    flex: 1
+    [Theme.breakpoints.down("sm")]: {
+      width: "100%"
+    }
+  },
+  /* inputPhone: {
+    width: "100% !important"
+  }, */
+  flex: {
+    display: "flex",
+    alignItems: "center",
+    [Theme.breakpoints.down("sm")]: {
+      flexDirection: "column-reverse"
+    }
   },
   button: {
     marginTop: "20px",

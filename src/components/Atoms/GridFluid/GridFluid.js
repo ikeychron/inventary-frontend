@@ -2,12 +2,20 @@ import React from "react";
 import { makeStyles } from "@material-ui/core";
 import classnames from "classnames";
 
-const GridFluid = ({ children, className, ...rest }) => {
+const GridFluid = ({ columns, rows, children, className, ...rest }) => {
   // Styles
   const styles = makeStyles(Theme => ({
     default: {
-      display: "flex",
-      flexWrap: "wrap",
+      width: "100%",
+      display: "grid",
+      gridTemplateColumns: columns,
+      gridTemplateRows: rows,
+      alignItems: "center",
+      justifyContent: "center",
+
+      [Theme.breakpoints.down("sm")]: {
+        display: "contents"
+      }
     }
   }));
 
@@ -23,6 +31,11 @@ const GridFluid = ({ children, className, ...rest }) => {
       {children}
     </div>
   );
+};
+
+GridFluid.defaultProps = {
+  columns: "auto",
+  rows: "auto"
 };
 
 export default GridFluid;

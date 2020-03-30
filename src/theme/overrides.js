@@ -35,7 +35,7 @@ export default {
   },
   MuiInputBase: {
     input: {
-      //color: palette.text.white
+      // color: palette.text.dark
     }
   },
   MuiInput: {
@@ -43,6 +43,11 @@ export default {
       "&:hover:not(.Mui-disabled):before": {
         borderBottom: `1px solid ${palette.primary.light}`
       }
+    }
+  },
+  MuiSelect: {
+    select: {
+
     }
   }
 };
