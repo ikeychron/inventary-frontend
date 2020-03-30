@@ -10,6 +10,7 @@ import theme from "./theme";
 // Pages
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import Home from "./pages/Home";
 
 const App = () => {
   return (
@@ -17,8 +18,10 @@ const App = () => {
       <ThemeProvider theme={theme}>
           <CssBaseline />
           <Switch>
-            <Route exact path="/" component={SignUp} />
-            <Route exact path="/iniciar-sesion" component={Login} />
+            <Route exact path="/" component={Login} />
+            {/* <Route exact path="/iniciar-sesion" component={Login} /> */}
+            <Route exact path="/home" component={Home} />
+            <Route exact path="/registrar-usuario" component={SignUp} />
             <Redirect to="/" />
           </Switch>
       </ThemeProvider>

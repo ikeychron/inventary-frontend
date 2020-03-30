@@ -43,5 +43,12 @@ export default makeStyles(Theme => ({
     width: 250,
     textTransform: "uppercase",
     textAlign: "center"
+  },
+  link: {
+    marginTop: "20px",
+    width: 250,
+    textTransform: "uppercase",
+    textAlign: "center",
+    padding: "1rem"
   }
 }));

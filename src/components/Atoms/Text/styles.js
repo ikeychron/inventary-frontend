@@ -1,25 +1,21 @@
 import { makeStyles } from "@material-ui/core";
 
 export default makeStyles(Theme => ({
-  base: {
+  default: {
     fontSize: "14px",
-    color: Theme.palette.text.dark,
+    color: Theme.palette.secondary.dark,
     margin: "0.8em 0"
   },
 
-  default: {
-    composes: "base"
-  },
-
   title: {
-    composes: "base",
     fontWeight: "bold",
+    color: Theme.palette.secondary.dark,
     fontSize: "18px"
   },
 
   label: {
-    composes: "base",
     fontSize: "16px",
+    color: Theme.palette.secondary.dark,
     fontWeight: "normal"
   }
 }));

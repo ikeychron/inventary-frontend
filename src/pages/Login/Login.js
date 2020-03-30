@@ -65,9 +65,15 @@ const Login = () => {
             ¿Olvidaste tu contraseña?
           </Link>
         </div>
-        <Button color="primary" className={classes.button} onClick={() => swal('Press')}>
-          Iniciar Sesión
-        </Button>
+        <Link to="/home" className={classes.link}>
+          <Button
+            color="primary"
+            className={classes.button}
+            // onClick={() => swal("Press")}
+          >
+            Iniciar Sesión
+          </Button>
+        </Link>
       </div>
     </div>
   );

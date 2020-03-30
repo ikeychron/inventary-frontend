@@ -123,7 +123,7 @@ const SignUp = () => {
         />
       </GridFluid>
       <div className={classes.flex}>
-        <Link to="/iniciar-sesion" className={classes.button} color="secondary">
+        <Link to="/iniciar-sesion" className={classes.link} color="secondary">
           Cancelar
         </Link>
         <Button
