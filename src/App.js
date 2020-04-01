@@ -6,6 +6,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 
 // Theme
 import theme from "./theme";
+import GlobalResets from "./theme/globalResets";
 
 // Pages
 import Login from "./pages/Login";
@@ -16,14 +17,15 @@ const App = () => {
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <Switch>
-            <Route exact path="/" component={Login} />
-            {/* <Route exact path="/iniciar-sesion" component={Login} /> */}
-            <Route exact path="/home" component={Home} />
-            <Route exact path="/registrar-usuario" component={SignUp} />
-            <Redirect to="/" />
-          </Switch>
+        <CssBaseline />
+        <GlobalResets />
+        <Switch>
+          <Route exact path="/" component={Login} />
+          {/* <Route exact path="/iniciar-sesion" component={Login} /> */}
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/registrar-usuario" component={SignUp} />
+          <Redirect to="/" />
+        </Switch>
       </ThemeProvider>
     </BrowserRouter>
   );
