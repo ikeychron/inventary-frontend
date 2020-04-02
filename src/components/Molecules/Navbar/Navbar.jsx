@@ -1,20 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 
-import { FiMenu, FiX } from "react-icons/fi";
+import { FiMenu } from "react-icons/fi";
 
 // Components
 import Text from "../../Atoms/Text";
 import Link from "../../Atoms/Link";
+import Button from "../../Atoms/Button";
 
 // styles
-import Palette from "../../../theme/palette";
 import { makeStyles } from "@material-ui/core/styles";
-import { AppBar, Toolbar, IconButton, Button } from "@material-ui/core";
+import { AppBar, Toolbar, IconButton } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
-    alignItems: "center",
+    width: "100%",
   },
   menuButton: {
     color: theme.palette.text.white,
@@ -23,10 +22,6 @@ const useStyles = makeStyles((theme) => ({
   title: {
     color: theme.palette.text.white,
     flexGrow: 1,
-  },
-  button: {
-    color: theme.palette.text.white,
-    marginLeft: "1rem",
   },
   navbar: {
     backgroundColor: theme.palette.primary.dark,
@@ -38,22 +33,23 @@ const Navbar = () => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" className={classes.navbar}>
+      <AppBar
+        position={window.innerWidth <= "768" ? "fixed" : "static"}
+        className={classes.navbar}
+      >
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          >
-            <FiMenu />
-          </IconButton>
-          <Text variant="h6" className={classes.title}>
-            Sistema de Inventario
-          </Text>
-          <Button color="inherit" className={classes.button}>
-            Cerrar Sesión
-          </Button>
+          {window.innerWidth <= "768" && (
+            <IconButton
+              edge="start"
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="menu"
+            >
+              <FiMenu />
+            </IconButton>
+          )}
+          <Link className={classes.title}>Sistema de Inventario</Link>
+          <Button theme="flat">Cerrar Sesión</Button>
         </Toolbar>
       </AppBar>
     </div>

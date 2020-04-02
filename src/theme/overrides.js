@@ -20,7 +20,7 @@ export default {
       }
     }, */
     label: {
-      textTransform: "inherit",
+      textTransform: "initial",
     },
   },
   MuiTab: {

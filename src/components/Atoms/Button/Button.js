@@ -1,5 +1,6 @@
 import React from "react";
 import classnames from "classnames";
+import { get } from "lodash";
 import { Button as ButtonBase } from "@material-ui/core";
 
 // Styles
@@ -7,6 +8,7 @@ import styles from "./styles";
 
 const Button = ({
   type,
+  theme,
   className,
   children,
   disabled,
@@ -16,8 +18,8 @@ const Button = ({
   const classes = styles();
 
   const classNames = classnames({
-    [classes.default]: true,
-    [className]: !!className
+    [get(classes, theme, classes.default)]: true,
+    [className]: !!className,
   });
 
   return (
@@ -26,7 +28,7 @@ const Button = ({
       className={classNames}
       disabled={disabled}
       onClick={!disabled ? onClick : () => {}}
-      variant="contained"
+      variant={theme}
       {...rest}
     >
       {children}
@@ -35,7 +37,8 @@ const Button = ({
 };
 
 Button.defaultProps = {
-  disabled: false
+  disabled: false,
+  theme: "contained",
 };
 
 export default Button;

@@ -4,21 +4,13 @@ import { NavLink as RouteLink } from "react-router-dom";
 
 import styles from "./styles";
 
-const Link = ({
-  href,
-  to,
-  label,
-  children,
-  className,
-  disabled,
-  ...rest
-}) => {
+const Link = ({ href, to, label, children, className, disabled, ...rest }) => {
   const classes = styles();
 
   const classNames = classnames({
     [classes.default]: true,
     [styles.disabled]: disabled,
-    [className]: !!className
+    [className]: !!className,
   });
 
   if (to) {
@@ -28,7 +20,7 @@ const Link = ({
         className={classNames}
         {...rest}
         style={{ fontWeight: 500 }}
-        activeStyle={{ color: "0083df", fontWeight: "bold" }}
+        activeStyle={{ color: "white", fontWeight: "bold" }}
       >
         {children}
       </RouteLink>
