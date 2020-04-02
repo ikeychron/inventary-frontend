@@ -6,8 +6,8 @@ export default {
       borderRadius: 8,
 
       "&:hover": {
-        backgroundColor: "transparent"
-      }
+        backgroundColor: "transparent",
+      },
     },
     /* contained: {
       boxShadow: 'none',
@@ -20,34 +20,29 @@ export default {
       }
     }, */
     label: {
-      textTransform: "inherit"
-    }
+      textTransform: "initial",
+    },
   },
   MuiTab: {
     root: {
-      minWidth: "max-content !important"
-    }
+      minWidth: "max-content !important",
+    },
   },
   MuiDialog: {
     paperWidthXs: {
-      maxWidth: 350
-    }
+      maxWidth: 350,
+    },
   },
   MuiInputBase: {
     input: {
       // color: palette.text.dark
-    }
+    },
   },
   MuiInput: {
     underline: {
       "&:hover:not(.Mui-disabled):before": {
-        borderBottom: `1px solid ${palette.primary.light}`
-      }
-    }
+        borderBottom: `1px solid ${palette.primary.light}`,
+      },
+    },
   },
-  MuiSelect: {
-    select: {
-
-    }
-  }
 };

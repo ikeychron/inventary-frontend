@@ -2,22 +2,22 @@ import React, { useState } from "react";
 
 // Atoms
 import Text from "../../components/Atoms/Text";
-import Button from "../../components/Atoms/Button";
-import Link from "../../components/Atoms/Link";
-import Input from "../../components/Atoms/Input";
+
+// Molecules
+import Sidebar from "../../components/Molecules/Sidebar";
+import Navbar from "../../components/Molecules/Navbar";
 
 // Styles
 import styles from "./styles.js";
-import Navbar from "../../components/Molecules/Navbar/Navbar";
 
 const Home = () => {
   const classes = styles();
 
   return (
-    <>
+    <div className={classes.container}>
       <Navbar />
-      <Text>H</Text>
-    </>
+      <Sidebar />
+    </div>
   );
 };
 

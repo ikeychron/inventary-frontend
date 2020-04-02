@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core";
 import imgBg from "../../assets/img/login.jpg";
 
-export default makeStyles(Theme => ({
+export default makeStyles((Theme) => ({
   container: {
     width: "100vw",
     height: "100vh",
@@ -12,8 +12,8 @@ export default makeStyles(Theme => ({
     alignItems: "center",
     [Theme.breakpoints.down("sm")]: {
       backgroundImage: "none",
-      justifyContent: "center"
-    }
+      justifyContent: "center",
+    },
   },
   divForm: {
     width: "500px",
@@ -28,40 +28,41 @@ export default makeStyles(Theme => ({
     [Theme.breakpoints.down("sm")]: {
       padding: "3rem",
       width: "100%",
-      boxShadow: "none"
-    }
+      boxShadow: "none",
+    },
   },
   flex: {
     width: "100%",
     display: "flex",
-    justifyContent: "flex-end"
+    justifyContent: "flex-end",
   },
   img: {
-    width: "120px"
+    width: "120px",
   },
   icon: {
     width: "25px",
     height: "25px",
     color: Theme.palette.primary.main,
-    marginBottom: "5px"
+    marginBottom: "5px",
   },
   title: {
     fontSize: "40px",
     marginTop: ".6rem",
-    marginBottom: 0
+    marginBottom: 0,
   },
   link: {
-    marginRight: "10px"
+    marginRight: "10px",
+    color: Theme.palette.primary.main,
   },
   inputEmail: {
-    margin: "2rem 0"
+    margin: "2rem 0",
   },
   inputPass: {
-    marginBottom: "1rem"
+    marginBottom: "1rem",
   },
   button: {
     marginTop: "20px",
     width: 250,
-    textTransform: "uppercase"
-  }
+    textTransform: "uppercase",
+  },
 }));
