@@ -1,9 +1,13 @@
 import React from "react";
+import { connect } from "react-redux";
 
+// Actions
+import { openSidebar } from "../../../store/actions/layoutActions";
+
+// Icons
 import { FiMenu } from "react-icons/fi";
 
 // Components
-import Text from "../../Atoms/Text";
 import Link from "../../Atoms/Link";
 import Button from "../../Atoms/Button";
 
@@ -28,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Navbar = () => {
+const Navbar = ({ openSidebar }) => {
   const classes = useStyles();
 
   return (
@@ -44,6 +48,7 @@ const Navbar = () => {
               className={classes.menuButton}
               color="inherit"
               aria-label="menu"
+              onClick={openSidebar}
             >
               <FiMenu />
             </IconButton>
@@ -56,4 +61,8 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+const mapDispatchToProps = {
+  openSidebar,
+};
+
+export default connect(null, mapDispatchToProps)(Navbar);

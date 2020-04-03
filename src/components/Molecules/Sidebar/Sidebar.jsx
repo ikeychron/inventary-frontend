@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import { Slide } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 // Icons
@@ -6,9 +8,6 @@ import { GiMedicines } from "react-icons/gi";
 import { FaRegCopy, FaRegFileAlt } from "react-icons/fa";
 import { MdSettings } from "react-icons/md";
 import { FiHelpCircle } from "react-icons/fi";
-
-// Img
-import imgProfile from "../../../assets/svg/avatar.svg";
 
 // Atoms
 import Text from "../../Atoms/Text";
@@ -41,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
   label: {
     color: theme.palette.text.white,
     fontSize: 15,
+    textAlign: "left",
   },
   icon: {
     width: "23px",
@@ -77,71 +77,81 @@ const useStyles = makeStyles((theme) => ({
 
     [theme.breakpoints.down("md")]: {
       margin: "3rem 0 1rem 0",
+      padding: "1rem",
     },
   },
 }));
 
-const Sidebar = () => {
+const Sidebar = ({ open }) => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <div className={classes.tabs}>
-        <div className={classes.tabHeader}>
-          {/* <img src={imgProfile} className={classes.img} alt="Foto de perfil" /> */}
-          <div className={classes.div}>
-            <Text theme="title" component="h6" className={classes.title}>
-              Juan Carlos Barrios Sánchez
-            </Text>
-            <Text theme="label" className={classes.subtitle}>
-              juanbarrios045@gmail.com
-            </Text>
+    <Slide
+      direction="right"
+      in={window.innerWidth <= "768" ? open : true}
+      timeout={window.innerWidth <= "768" ? (1000, 1000) : 0}
+    >
+      <div className={classes.root}>
+        <div className={classes.tabs}>
+          <div className={classes.tabHeader}>
+            <div className={classes.div}>
+              <Text theme="title" component="h6" className={classes.title}>
+                Juan Carlos Barrios Sánchez
+              </Text>
+              <Text theme="label" className={classes.subtitle}>
+                juanbarrios045@gmail.com
+              </Text>
+            </div>
           </div>
-        </div>
 
-        <Link className={classes.link}>
-          <Button theme="flat" className={classes.button}>
-            <FaRegFileAlt className={classes.icon} />{" "}
-            <Text theme="label" className={classes.label}>
-              Historias Médicas
-            </Text>
-          </Button>
-        </Link>
-        <Link className={classes.link}>
-          <Button theme="flat" className={classes.button}>
-            <GiMedicines className={classes.icon} />{" "}
-            <Text theme="label" className={classes.label}>
-              Inventario
-            </Text>
-          </Button>
-        </Link>
-        <Link className={classes.link}>
-          <Button theme="flat" className={classes.button}>
-            <FaRegCopy className={classes.icon} />{" "}
-            <Text theme="label" className={classes.label}>
-              Reportes
-            </Text>
-          </Button>
-        </Link>
-        <Link className={classes.link}>
-          <Button theme="flat" className={classes.button}>
-            <MdSettings className={classes.icon} />{" "}
-            <Text theme="label" className={classes.label}>
-              Configuración
-            </Text>
-          </Button>
-        </Link>
-        <Link className={classes.link}>
-          <Button theme="flat" className={classes.button}>
-            <FiHelpCircle className={classes.icon} />{" "}
-            <Text theme="label" className={classes.label}>
-              Soporte
-            </Text>
-          </Button>
-        </Link>
+          <Link className={classes.link}>
+            <Button theme="flat" className={classes.button}>
+              <FaRegFileAlt className={classes.icon} />{" "}
+              <Text theme="label" className={classes.label}>
+                Historias Médicas
+              </Text>
+            </Button>
+          </Link>
+          <Link className={classes.link}>
+            <Button theme="flat" className={classes.button}>
+              <GiMedicines className={classes.icon} />{" "}
+              <Text theme="label" className={classes.label}>
+                Inventario
+              </Text>
+            </Button>
+          </Link>
+          <Link className={classes.link}>
+            <Button theme="flat" className={classes.button}>
+              <FaRegCopy className={classes.icon} />{" "}
+              <Text theme="label" className={classes.label}>
+                Reportes
+              </Text>
+            </Button>
+          </Link>
+          <Link className={classes.link}>
+            <Button theme="flat" className={classes.button}>
+              <MdSettings className={classes.icon} />{" "}
+              <Text theme="label" className={classes.label}>
+                Configuración
+              </Text>
+            </Button>
+          </Link>
+          <Link className={classes.link}>
+            <Button theme="flat" className={classes.button}>
+              <FiHelpCircle className={classes.icon} />{" "}
+              <Text theme="label" className={classes.label}>
+                Soporte
+              </Text>
+            </Button>
+          </Link>
+        </div>
       </div>
-    </div>
+    </Slide>
   );
 };
 
-export default Sidebar;
+const mapStateToProps = ({ layout: { openSidebar } }) => ({
+  open: openSidebar,
+});
+
+export default connect(mapStateToProps, null)(Sidebar);
