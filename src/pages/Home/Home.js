@@ -1,11 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
 // Atoms
-import Text from "../../components/Atoms/Text";
-
-// Molecules
-import Sidebar from "../../components/Molecules/Sidebar";
-import Navbar from "../../components/Molecules/Navbar";
+import Container from "../../components/Atoms/Container";
 
 // Styles
 import styles from "./styles.js";
@@ -13,12 +9,7 @@ import styles from "./styles.js";
 const Home = () => {
   const classes = styles();
 
-  return (
-    <div className={classes.container}>
-      <Navbar />
-      <Sidebar />
-    </div>
-  );
+  return <Container className={classes.container} />;
 };
 
 export default Home;

@@ -6,6 +6,8 @@ import { InputAdornment, Slide } from "@material-ui/core";
 
 // Images
 import imgProfile from "../../assets/svg/avatar.svg";
+
+// Icons
 import { FaUserAlt, FaLock } from "react-icons/fa";
 
 // Atoms

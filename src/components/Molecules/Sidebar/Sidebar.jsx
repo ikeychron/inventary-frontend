@@ -20,6 +20,11 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     height: "100%",
     width: 250,
+
+    [theme.breakpoints.down("md")]: {
+      zIndex: 100,
+      position: "absolute",
+    },
   },
   tabs: {
     width: "100%",
