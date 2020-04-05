@@ -51,7 +51,11 @@ const SignUp = () => {
             <Text component="h1" theme="title" className={classes.title}>
               Registrar Usuario
             </Text>
-            <GridFluid columns="40% 40%">
+            <GridFluid
+              columns="50% 50%"
+              spacing="2.5rem 2rem"
+              className={classes.gridFluid}
+            >
               <Input
                 type="text"
                 className={classes.input}

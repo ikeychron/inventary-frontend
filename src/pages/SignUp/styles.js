@@ -12,20 +12,16 @@ export default makeStyles((Theme) => ({
   title: {
     fontSize: "40px",
     marginTop: ".6rem",
-    marginBottom: 0,
+    marginBottom: "2rem",
     textAlign: "center",
   },
-  link: {
-    marginRight: "10px",
-    //color: Theme.palette.primary.main,
-  },
   input: {
-    margin: "1.5rem 1rem",
     [Theme.breakpoints.down("sm")]: {
       width: "100%",
     },
   },
   flex: {
+    marginTop: "2rem",
     display: "flex",
     alignItems: "center",
     [Theme.breakpoints.down("sm")]: {
@@ -44,5 +40,9 @@ export default makeStyles((Theme) => ({
     textTransform: "uppercase",
     textAlign: "center",
     padding: "1rem",
+  },
+  gridFluid: {
+    width: "80% !important",
+    margin: "0 auto",
   },
 }));

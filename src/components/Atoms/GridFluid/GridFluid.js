@@ -2,7 +2,14 @@ import React from "react";
 import { makeStyles } from "@material-ui/core";
 import classnames from "classnames";
 
-const GridFluid = ({ columns, rows, children, className, ...rest }) => {
+const GridFluid = ({
+  columns,
+  rows,
+  spacing,
+  children,
+  className,
+  ...rest
+}) => {
   // Styles
   const styles = makeStyles((Theme) => ({
     default: {
@@ -10,7 +17,8 @@ const GridFluid = ({ columns, rows, children, className, ...rest }) => {
       display: "grid",
       gridTemplateColumns: columns,
       gridTemplateRows: rows,
-      alignItems: "center",
+      gridGap: `${spacing}`,
+      alignItems: "flex-start",
       justifyContent: "center",
 
       [Theme.breakpoints.down("sm")]: {
@@ -38,6 +46,7 @@ const GridFluid = ({ columns, rows, children, className, ...rest }) => {
 GridFluid.defaultProps = {
   columns: "auto",
   rows: "auto",
+  spacing: "auto",
 };
 
 export default GridFluid;
