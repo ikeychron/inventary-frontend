@@ -4,7 +4,7 @@ import classnames from "classnames";
 
 const GridFluid = ({ columns, rows, children, className, ...rest }) => {
   // Styles
-  const styles = makeStyles(Theme => ({
+  const styles = makeStyles((Theme) => ({
     default: {
       width: "100%",
       display: "grid",
@@ -14,16 +14,18 @@ const GridFluid = ({ columns, rows, children, className, ...rest }) => {
       justifyContent: "center",
 
       [Theme.breakpoints.down("sm")]: {
-        display: "contents"
-      }
-    }
+        display: "contents",
+        gridTemplateColumns: "auto",
+        gridTemplateRows: "auto",
+      },
+    },
   }));
 
   const classes = styles();
 
   const classNames = classnames({
     [classes.default]: true,
-    [className]: !!className
+    [className]: !!className,
   });
 
   return (
@@ -35,7 +37,7 @@ const GridFluid = ({ columns, rows, children, className, ...rest }) => {
 
 GridFluid.defaultProps = {
   columns: "auto",
-  rows: "auto"
+  rows: "auto",
 };
 
 export default GridFluid;

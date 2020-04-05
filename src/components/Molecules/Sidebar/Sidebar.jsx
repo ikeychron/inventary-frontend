@@ -133,7 +133,7 @@ const Sidebar = ({ open }) => {
               </Text>
             </Button>
           </Link>
-          <Link className={classes.link}>
+          <Link to="/registrar-usuario" className={classes.link}>
             <Button theme="flat" className={classes.button}>
               <MdSettings className={classes.icon} />{" "}
               <Text theme="label" className={classes.label}>

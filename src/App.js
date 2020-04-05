@@ -20,11 +20,10 @@ const App = () => {
         <CssBaseline />
         <GlobalResets />
         <Switch>
-          <Route exact path="/" component={Login} />
-          {/* <Route exact path="/iniciar-sesion" component={Login} /> */}
+          <Route exact path="/iniciar-sesion" component={Login} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/registrar-usuario" component={SignUp} />
-          {/* <Redirect to="/" /> */}
+          <Redirect to="/iniciar-sesion" />
         </Switch>
       </ThemeProvider>
     </BrowserRouter>

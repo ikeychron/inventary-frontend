@@ -53,7 +53,9 @@ const Navbar = ({ openSidebar }) => {
               <FiMenu />
             </IconButton>
           )}
-          <Link className={classes.title}>Sistema de Inventario</Link>
+          <Link to="/home" className={classes.title}>
+            Sistema de Inventario
+          </Link>
           <Button theme="flat">Cerrar Sesión</Button>
         </Toolbar>
       </AppBar>

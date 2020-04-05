@@ -9,7 +9,6 @@ const Link = ({ href, to, label, children, className, disabled, ...rest }) => {
 
   const classNames = classnames({
     [classes.default]: true,
-    [styles.disabled]: disabled,
     [className]: !!className,
   });
 
@@ -20,7 +19,7 @@ const Link = ({ href, to, label, children, className, disabled, ...rest }) => {
         className={classNames}
         {...rest}
         style={{ fontWeight: 500 }}
-        activeStyle={{ color: "white", fontWeight: "bold" }}
+        //activeStyle={{ color: "#0083df", fontWeight: "bold" }}
       >
         {children}
       </RouteLink>

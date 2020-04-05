@@ -25,10 +25,10 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
   },
   container: {
-    margin: "2rem 2rem 0 2rem",
+    margin: "3rem 2rem 0 2rem",
 
     [theme.breakpoints.down("md")]: {
-      margin: "5rem 2rem 0 2rem",
+      margin: "5rem 3rem 2rem 3rem",
     },
   },
 }));
