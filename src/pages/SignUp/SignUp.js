@@ -13,6 +13,7 @@ import Select from "../../components/Atoms/Select";
 
 // Styles
 import styles from "./styles.js";
+import Axios from "axios";
 
 const SignUp = () => {
   const classes = styles();
@@ -20,29 +21,31 @@ const SignUp = () => {
   return (
     <Formik
       initialValues={{
-        firstName: "",
-        lastName: "",
+        name: "",
+        last_name: "",
         dni: "",
-        phoneNumber: "",
+        phone: "",
         sex: "",
-        role: "",
+        roleId: "",
         email: "",
         password: "",
         confirmPassword: "",
       }}
       validationSchema={Yup.object({
-        firstName: Yup.string().required("Este campo es requerido"),
-        lastName: Yup.string().required("Este campo es requerido"),
+        name: Yup.string().required("Este campo es requerido"),
+        last_name: Yup.string().required("Este campo es requerido"),
         dni: Yup.string().required("Este campo es requerido"),
-        phoneNumber: Yup.string().required("Este campo es requerido"),
+        phone: Yup.string().required("Este campo es requerido"),
         sex: Yup.string().required("Este campo es requerido"),
-        role: Yup.string().required("Este campo es requerido"),
+        roleId: Yup.string().required("Este campo es requerido"),
         email: Yup.string().required("Este campo es requerido"),
         password: Yup.string().required("Este campo es requerido"),
         confirmPassword: Yup.string().required("Este campo es requerido"),
       })}
       onSubmit={(values) => {
-        alert(JSON.stringify(values, null, 2));
+        Axios.post("http://localhost:4000/user", values)
+          .then((msg) => console.log(msg))
+          .catch((err) => console.log(err));
       }}
     >
       {({ handleChange, handleSubmit, values, errors, touched }) => (
@@ -61,29 +64,27 @@ const SignUp = () => {
                 className={classes.input}
                 placeholder="Nombres"
                 inputProps={{ maxLength: 30 }}
-                name="firstName"
-                value={values.firstName}
+                name="name"
+                value={values.name}
                 onChange={handleChange}
                 autoComplete="off"
-                error={touched.firstName && errors.firstName ? true : false}
-                helperText={
-                  touched.firstName && errors.firstName
-                    ? errors.firstName
-                    : null
-                }
+                error={touched.name && errors.name ? true : false}
+                helperText={touched.name && errors.name ? errors.name : null}
               />
               <Input
                 type="text"
                 className={classes.input}
                 placeholder="Apellidos"
                 inputProps={{ maxLength: 30 }}
-                name="lastName"
-                value={values.lastName}
+                name="last_name"
+                value={values.last_name}
                 onChange={handleChange}
                 autoComplete="off"
-                error={touched.lastName && errors.lastName ? true : false}
+                error={touched.last_name && errors.last_name ? true : false}
                 helperText={
-                  touched.lastName && errors.lastName ? errors.lastName : null
+                  touched.last_name && errors.last_name
+                    ? errors.last_name
+                    : null
                 }
               />
               <Input
@@ -103,16 +104,12 @@ const SignUp = () => {
                 className={classes.input}
                 placeholder="Número telefónico"
                 inputProps={{ maxLength: 15 }}
-                name="phoneNumber"
-                value={values.phoneNumber}
+                name="phone"
+                value={values.phone}
                 onChange={handleChange}
                 autoComplete="off"
-                error={touched.phoneNumber && errors.phoneNumber ? true : false}
-                helperText={
-                  touched.phoneNumber && errors.phoneNumber
-                    ? errors.phoneNumber
-                    : null
-                }
+                error={touched.phone && errors.phone ? true : false}
+                helperText={touched.phone && errors.phone ? errors.phone : null}
               />
               <Select
                 className={classes.input}
@@ -131,15 +128,17 @@ const SignUp = () => {
               <Select
                 className={classes.input}
                 placeholder="Rol del nuevo usuario"
-                name="role"
-                value={values.role}
+                name="roleId"
+                value={values.roleId}
                 onChange={handleChange}
                 autoComplete="off"
-                error={touched.role && errors.role ? true : false}
-                helperText={touched.role && errors.role ? errors.role : null}
+                error={touched.roleId && errors.roleId ? true : false}
+                helperText={
+                  touched.roleId && errors.roleId ? errors.roleId : null
+                }
               >
-                <option value="Usuario">Usuario</option>
-                <option value="Administrador">Administrador</option>
+                <option value="1">Usuario</option>
+                <option value="2">Administrador</option>
               </Select>
               <Input
                 type="email"
