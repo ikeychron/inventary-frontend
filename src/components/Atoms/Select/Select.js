@@ -7,7 +7,6 @@ import styles from "./styles";
 
 const Select = ({
   type,
-  value,
   className,
   disabled,
   children,

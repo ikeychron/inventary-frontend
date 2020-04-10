@@ -1,4 +1,5 @@
 import React from "react";
+import Swal from "sweetalert2";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
@@ -18,19 +19,21 @@ import Axios from "axios";
 const SignUp = () => {
   const classes = styles();
 
+  const initialValues = {
+    name: "",
+    last_name: "",
+    dni: "",
+    phone: "",
+    sex: "",
+    roleId: "",
+    email: "",
+    password: "",
+    confirm_password: "",
+  };
+
   return (
     <Formik
-      initialValues={{
-        name: "",
-        last_name: "",
-        dni: "",
-        phone: "",
-        sex: "",
-        roleId: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-      }}
+      initialValues={initialValues}
       validationSchema={Yup.object({
         name: Yup.string().required("Este campo es requerido"),
         last_name: Yup.string().required("Este campo es requerido"),
@@ -40,12 +43,31 @@ const SignUp = () => {
         roleId: Yup.string().required("Este campo es requerido"),
         email: Yup.string().required("Este campo es requerido"),
         password: Yup.string().required("Este campo es requerido"),
-        confirmPassword: Yup.string().required("Este campo es requerido"),
+        confirm_password: Yup.string().required("Este campo es requerido"),
       })}
-      onSubmit={(values) => {
-        Axios.post("http://localhost:4000/user", values)
-          .then((msg) => console.log(msg))
-          .catch((err) => console.log(err));
+      onSubmit={async (values, { resetForm }) => {
+        await Axios.post("http://localhost:4000/new-user", values)
+          .then(({ data }) => {
+            console.log(data);
+            Swal.fire({
+              title: "¡Éxito!",
+              text: data.message,
+              icon: "success",
+              confirmButtonText: "Aceptar",
+            });
+          })
+          .catch(({ response }) => {
+            const error = response.data.error;
+            Swal.fire({
+              title: "¡Error!",
+              text: error[0].msg,
+              icon: "error",
+              confirmButtonText: "Aceptar",
+            });
+          });
+
+        Object.keys(values).forEach((key) => (values[key] = ""));
+        resetForm(initialValues);
       }}
     >
       {({ handleChange, handleSubmit, values, errors, touched }) => (
@@ -65,11 +87,11 @@ const SignUp = () => {
                 placeholder="Nombres"
                 inputProps={{ maxLength: 30 }}
                 name="name"
-                value={values.name}
+                value={values.name || ""}
                 onChange={handleChange}
                 autoComplete="off"
                 error={touched.name && errors.name ? true : false}
-                helperText={touched.name && errors.name ? errors.name : null}
+                helperText={touched.name && errors.name ? errors.name : ""}
               />
               <Input
                 type="text"
@@ -82,9 +104,7 @@ const SignUp = () => {
                 autoComplete="off"
                 error={touched.last_name && errors.last_name ? true : false}
                 helperText={
-                  touched.last_name && errors.last_name
-                    ? errors.last_name
-                    : null
+                  touched.last_name && errors.last_name ? errors.last_name : ""
                 }
               />
               <Input
@@ -97,7 +117,7 @@ const SignUp = () => {
                 onChange={handleChange}
                 autoComplete="off"
                 error={touched.dni && errors.dni ? true : false}
-                helperText={touched.dni && errors.dni ? errors.dni : null}
+                helperText={touched.dni && errors.dni ? errors.dni : ""}
               />
               <Input
                 type="text"
@@ -109,7 +129,7 @@ const SignUp = () => {
                 onChange={handleChange}
                 autoComplete="off"
                 error={touched.phone && errors.phone ? true : false}
-                helperText={touched.phone && errors.phone ? errors.phone : null}
+                helperText={touched.phone && errors.phone ? errors.phone : ""}
               />
               <Select
                 className={classes.input}
@@ -119,7 +139,7 @@ const SignUp = () => {
                 onChange={handleChange}
                 autoComplete="off"
                 error={touched.sex && errors.sex ? true : false}
-                helperText={touched.sex && errors.sex ? errors.sex : null}
+                helperText={touched.sex && errors.sex ? errors.sex : ""}
               >
                 <option value="Hombre">Hombre</option>
                 <option value="Mujer">Mujer</option>
@@ -134,7 +154,7 @@ const SignUp = () => {
                 autoComplete="off"
                 error={touched.roleId && errors.roleId ? true : false}
                 helperText={
-                  touched.roleId && errors.roleId ? errors.roleId : null
+                  touched.roleId && errors.roleId ? errors.roleId : ""
                 }
               >
                 <option value="1">Usuario</option>
@@ -150,7 +170,7 @@ const SignUp = () => {
                 onChange={handleChange}
                 autoComplete="off"
                 error={touched.email && errors.email ? true : false}
-                helperText={touched.email && errors.email ? errors.email : null}
+                helperText={touched.email && errors.email ? errors.email : ""}
               />
               <Input
                 type="password"
@@ -163,7 +183,7 @@ const SignUp = () => {
                 autoComplete="off"
                 error={touched.password && errors.password ? true : false}
                 helperText={
-                  touched.password && errors.password ? errors.password : null
+                  touched.password && errors.password ? errors.password : ""
                 }
               />
               <Input
@@ -171,19 +191,19 @@ const SignUp = () => {
                 className={classes.input}
                 placeholder="Confirmar contraseña"
                 inputProps={{ maxLength: 30 }}
-                name="confirmPassword"
-                value={values.confirmPassword}
+                name="confirm_password"
+                value={values.confirm_password}
                 onChange={handleChange}
                 autoComplete="off"
                 error={
-                  touched.confirmPassword && errors.confirmPassword
+                  touched.confirm_password && errors.confirm_password
                     ? true
                     : false
                 }
                 helperText={
-                  touched.confirmPassword && errors.confirmPassword
-                    ? errors.confirmPassword
-                    : null
+                  touched.confirm_password && errors.confirm_password
+                    ? errors.confirm_password
+                    : ""
                 }
               />
             </GridFluid>

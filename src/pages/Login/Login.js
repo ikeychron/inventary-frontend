@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import swal from "sweetalert";
+import swal from "sweetalert2";
 
 // Material UI
 import { InputAdornment, Slide } from "@material-ui/core";

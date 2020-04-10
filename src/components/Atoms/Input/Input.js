@@ -5,7 +5,7 @@ import classnames from "classnames";
 import { TextField } from "@material-ui/core";
 import styles from "./styles";
 
-const Input = ({ type, value, className, disabled, ...rest }) => {
+const Input = ({ type, className, disabled, ...rest }) => {
   const classes = styles();
 
   const classNames = classnames({
