@@ -66,7 +66,6 @@ const SignUp = () => {
             });
           });
 
-        Object.keys(values).forEach((key) => (values[key] = ""));
         resetForm(initialValues);
       }}
     >

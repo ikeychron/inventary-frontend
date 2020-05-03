@@ -31,38 +31,12 @@ export default makeStyles((Theme) => ({
       boxShadow: "none",
     },
   },
-  flex: {
-    width: "100%",
-    display: "flex",
-    justifyContent: "flex-end",
-  },
   img: {
     width: "120px",
-  },
-  icon: {
-    width: "25px",
-    height: "25px",
-    color: Theme.palette.primary.main,
-    marginBottom: "5px",
   },
   title: {
     fontSize: "40px",
     marginTop: ".6rem",
     marginBottom: 0,
-  },
-  link: {
-    marginRight: "10px",
-    color: Theme.palette.primary.main,
-  },
-  inputEmail: {
-    margin: "2rem 0",
-  },
-  inputPass: {
-    marginBottom: "1rem",
-  },
-  button: {
-    marginTop: "20px",
-    width: 250,
-    textTransform: "uppercase",
   },
 }));
