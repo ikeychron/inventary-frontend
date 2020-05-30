@@ -1,7 +1,10 @@
-import { AUTHENTICATION, SET_USER, LOGOUT } from "../actions/userActions";
+import { AUTHENTICATION, SET_USER } from "../actions/userActions";
 
 const initialState = {
-  isAuthenticated: false,
+  isAuthenticated: {
+    token: "",
+    isAuth: false,
+  },
   user: {},
 };
 
@@ -10,26 +13,18 @@ export default (state = initialState, { type, payload }) => {
     case AUTHENTICATION:
       return {
         ...state,
-        isAuthenticated: payload.authenticated,
-        email: payload.email,
+        isAuthenticated: { token: payload.token, isAuth: payload.isAuth },
       };
 
     case SET_USER:
+      console.log({ payload });
       return {
         ...state,
         user: {
-          ...state.user,
-          ...payload.data,
+          ...payload,
         },
       };
 
-    case LOGOUT: {
-      return {
-        ...state,
-        isAuthenticated: false,
-        user: {},
-      };
-    }
     default:
       return state;
   }

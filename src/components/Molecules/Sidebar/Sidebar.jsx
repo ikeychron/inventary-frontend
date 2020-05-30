@@ -13,6 +13,7 @@ import { FiHelpCircle } from "react-icons/fi";
 import Text from "../../Atoms/Text";
 import Button from "../../Atoms/Button";
 import Link from "../../Atoms/Link";
+import { setUserData } from "../../../store/actions/userActions";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -79,6 +80,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "1rem 0",
     padding: "1rem 0",
     backgroundColor: theme.palette.primary.dark,
+    width: "100%",
 
     [theme.breakpoints.down("md")]: {
       margin: "3rem 0 1rem 0",
@@ -87,29 +89,29 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Sidebar = ({ open }) => {
+const Sidebar = ({ open, user }) => {
   const classes = useStyles();
 
   return (
     <Slide
       direction="right"
       in={window.innerWidth <= "768" ? open : true}
-      timeout={window.innerWidth <= "768" ? (1000, 1000) : 0}
+      timeout={window.innerWidth <= "768" ? (0, 0) : 0}
     >
       <div className={classes.root}>
         <div className={classes.tabs}>
           <div className={classes.tabHeader}>
             <div className={classes.div}>
               <Text theme="title" component="h6" className={classes.title}>
-                Juan Carlos Barrios Sánchez
+                {`${user.name} ${user.last_name}`}
               </Text>
               <Text theme="label" className={classes.subtitle}>
-                juanbarrios045@gmail.com
+                {user.email}
               </Text>
             </div>
           </div>
 
-          <Link className={classes.link}>
+          <Link to="/historias-medicas" className={classes.link}>
             <Button theme="flat" className={classes.button}>
               <FaRegFileAlt className={classes.icon} />{" "}
               <Text theme="label" className={classes.label}>
@@ -117,7 +119,7 @@ const Sidebar = ({ open }) => {
               </Text>
             </Button>
           </Link>
-          <Link className={classes.link}>
+          <Link to="/inventario" className={classes.link}>
             <Button theme="flat" className={classes.button}>
               <GiMedicines className={classes.icon} />{" "}
               <Text theme="label" className={classes.label}>
@@ -125,7 +127,7 @@ const Sidebar = ({ open }) => {
               </Text>
             </Button>
           </Link>
-          <Link className={classes.link}>
+          <Link to="/reportes" className={classes.link}>
             <Button theme="flat" className={classes.button}>
               <FaRegCopy className={classes.icon} />{" "}
               <Text theme="label" className={classes.label}>
@@ -133,15 +135,17 @@ const Sidebar = ({ open }) => {
               </Text>
             </Button>
           </Link>
-          <Link to="/registrar-usuario" className={classes.link}>
-            <Button theme="flat" className={classes.button}>
-              <MdSettings className={classes.icon} />{" "}
-              <Text theme="label" className={classes.label}>
-                Configuración
-              </Text>
-            </Button>
-          </Link>
-          <Link className={classes.link}>
+          {user.roleId === 2 && (
+            <Link to="/registrar-usuario" className={classes.link}>
+              <Button theme="flat" className={classes.button}>
+                <MdSettings className={classes.icon} />{" "}
+                <Text theme="label" className={classes.label}>
+                  Configuración
+                </Text>
+              </Button>
+            </Link>
+          )}
+          <Link to="/soporte" className={classes.link}>
             <Button theme="flat" className={classes.button}>
               <FiHelpCircle className={classes.icon} />{" "}
               <Text theme="label" className={classes.label}>
@@ -155,8 +159,9 @@ const Sidebar = ({ open }) => {
   );
 };
 
-const mapStateToProps = ({ layout: { openSidebar } }) => ({
+const mapStateToProps = ({ layout: { openSidebar }, auth: { user } }) => ({
   open: openSidebar,
+  user,
 });
 
 export default connect(mapStateToProps, null)(Sidebar);

@@ -45,8 +45,8 @@ const SignUp = () => {
         password: Yup.string().required("Este campo es requerido"),
         confirm_password: Yup.string().required("Este campo es requerido"),
       })}
-      onSubmit={async (values, { resetForm }) => {
-        await Axios.post("http://localhost:4000/new-user", values)
+      onSubmit={(values, { resetForm }) => {
+        Axios.post("http://localhost:4000/new-user", values)
           .then(({ data }) => {
             console.log(data);
             Swal.fire({
@@ -207,7 +207,7 @@ const SignUp = () => {
               />
             </GridFluid>
             <div className={classes.flex}>
-              <Link to="/home" className={classes.link} color="secondary">
+              <Link to="/" className={classes.link} color="secondary">
                 Cancelar
               </Link>
               <Button color="primary" className={classes.button} type="submit">

@@ -13,6 +13,7 @@
     "canvasjs": "^1.8.3",
     "classnames": "^2.2.6",
     "formik": "^2.1.4",
+    "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "node-sass": "^4.13.1",

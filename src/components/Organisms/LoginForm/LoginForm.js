@@ -1,8 +1,12 @@
 import React from "react";
+import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Formik } from "formik";
 import * as Yup from "yup";
+
+// JWT
+import jwt from "jsonwebtoken";
 
 // Material UI
 import { InputAdornment } from "@material-ui/core";
@@ -15,12 +19,17 @@ import Button from "../../Atoms/Button";
 import Link from "../../Atoms/Link";
 import Input from "../../Atoms/Input";
 
+// Actions
+import {
+  setUserAuthentication,
+  setUserData,
+} from "../../../store/actions/userActions";
+
 // Styles
 import styles from "./styles.js";
 import Axios from "axios";
-import { createGlobalStyle } from "styled-components";
 
-const LoginForm = ({ history }) => {
+const LoginForm = ({ history, setUserAuthentication, setUserData }) => {
   const classes = styles();
 
   const initialValues = {
@@ -42,8 +51,13 @@ const LoginForm = ({ history }) => {
 
             if (success) {
               localStorage.setItem("token", token);
+              const userData = jwt.verify(token, "KEY_SECRET");
 
-              history.push("/home");
+              setUserAuthentication(true, token);
+              console.log(userData);
+              setUserData(userData);
+
+              history.push("/");
             } else {
               Swal.fire({
                 title: "¡Error!",
@@ -136,4 +150,9 @@ const LoginForm = ({ history }) => {
   );
 };
 
-export default withRouter(LoginForm);
+const mapDispatchToProps = {
+  setUserAuthentication,
+  setUserData,
+};
+
+export default connect(null, mapDispatchToProps)(withRouter(LoginForm));

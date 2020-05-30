@@ -1,8 +1,4 @@
-import React, { useState } from "react";
-import swal from "sweetalert2";
-
-// Material UI
-import { Slide } from "@material-ui/core";
+import React from "react";
 
 // Images
 import imgProfile from "../../assets/svg/avatar.svg";
@@ -18,19 +14,15 @@ const Login = () => {
   const classes = styles();
 
   return (
-    <Slide direction="up" in timeout={1500}>
-      <div className={classes.container}>
-        <Slide direction="right" in timeout={1000}>
-          <div className={classes.divForm}>
-            <img src={imgProfile} className={classes.img} alt="Perfil" />
-            <Text component="h1" theme="title" className={classes.title}>
-              Bienvenido
-            </Text>
-            <LoginForm />
-          </div>
-        </Slide>
+    <div className={classes.container}>
+      <div className={classes.divForm}>
+        <img src={imgProfile} className={classes.img} alt="Perfil" />
+        <Text component="h1" theme="title" className={classes.title}>
+          Bienvenido
+        </Text>
+        <LoginForm />
       </div>
-    </Slide>
+    </div>
   );
 };
 

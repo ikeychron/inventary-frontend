@@ -11,6 +11,12 @@ import { FiMenu } from "react-icons/fi";
 import Link from "../../Atoms/Link";
 import Button from "../../Atoms/Button";
 
+// Actions
+import {
+  setUserAuthentication,
+  setUserData,
+} from "../../../store/actions/userActions";
+
 // styles
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Toolbar, IconButton } from "@material-ui/core";
@@ -32,8 +38,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Navbar = ({ openSidebar }) => {
+const Navbar = ({ openSidebar, setUserAuthentication, setUserData }) => {
   const classes = useStyles();
+
+  const handleOutLog = () => {
+    setUserAuthentication(false, "");
+    setUserData({});
+    localStorage.removeItem("token");
+  };
 
   return (
     <div className={classes.root}>
@@ -53,10 +65,12 @@ const Navbar = ({ openSidebar }) => {
               <FiMenu />
             </IconButton>
           )}
-          <Link to="/home" className={classes.title}>
-            Sistema de Inventario
+          <Link to="/" className={classes.title}>
+            Sistema de manejo de Inventario e Historias Médicas
           </Link>
-          <Button theme="flat">Cerrar Sesión</Button>
+          <Button theme="flat" onClick={handleOutLog}>
+            Cerrar Sesión
+          </Button>
         </Toolbar>
       </AppBar>
     </div>
@@ -65,6 +79,8 @@ const Navbar = ({ openSidebar }) => {
 
 const mapDispatchToProps = {
   openSidebar,
+  setUserAuthentication,
+  setUserData,
 };
 
 export default connect(null, mapDispatchToProps)(Navbar);

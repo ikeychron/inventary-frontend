@@ -3,7 +3,7 @@ export const SET_USER = "SET_USER";
 export const LOGOUT = "LOGOUT";
 
 export const setUserData = (data) => ({ payload: data, type: SET_USER });
-export const setUserAuthentication = (authenticated, email) => ({
-  payload: { authenticated, email },
-  type: SET_USER,
+export const setUserAuthentication = (isAuth, token) => ({
+  payload: { isAuth, token },
+  type: AUTHENTICATION,
 });
