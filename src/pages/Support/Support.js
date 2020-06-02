@@ -3,8 +3,6 @@ import React from "react";
 // Atoms
 import Container from "../../components/Atoms/Container";
 import Text from "../../components/Atoms/Text";
-import Button from "../../components/Atoms/Button";
-import Link from "../../components/Atoms/Link";
 import styles from "./styles.js";
 
 const Support = () => {

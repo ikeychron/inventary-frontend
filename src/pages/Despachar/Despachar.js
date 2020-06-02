@@ -24,9 +24,11 @@ import Input from "../../components/Atoms/Input";
 import GridFluid from "../../components/Atoms/GridFluid";
 import Select from "../../components/Atoms/Select";
 
+// Axios
+import Axios from "axios";
+
 // Styles
 import styles from "./styles.js";
-import Axios from "axios";
 
 const Despachar = () => {
   const classes = styles();
@@ -39,28 +41,7 @@ const Despachar = () => {
     sex: "",
     edad: "",
     description: "",
-    dataProducts: [
-      {
-        product1: "",
-        count1: "",
-      },
-      {
-        product2: "",
-        count2: "",
-      },
-      {
-        product3: "",
-        count3: "",
-      },
-      {
-        product4: "",
-        count4: "",
-      },
-      {
-        product5: "",
-        count5: "",
-      },
-    ],
+    dataProducts: [],
   };
 
   return (
@@ -86,10 +67,7 @@ const Despachar = () => {
             text: `Nombre del paciente: ${values.name},
             Cantidad del producto: ${values.stock},
             Tipo del producto: ${values.type},
-            Unidad de medida del producto: ${values.medide},
-            Unidad de medida del producto: ${values.medide},
-            Unidad de medida del producto: ${values.medide},
-            Unidad de medida del producto: ${values.medide},
+            Unidad de medida del producto: ${values.medide}, 
             `,
             confirmButtonText: "Aceptar",
           });
@@ -360,7 +338,7 @@ const Despachar = () => {
               </Table>
             </TableContainer>
             <div className={classes.flex}>
-              <Link to="/" className={classes.link} color="secondary">
+              <Link to="/inventario" className={classes.link} color="secondary">
                 Cancelar
               </Link>
               <Button color="primary" className={classes.button} type="submit">

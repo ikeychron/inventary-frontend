@@ -13,7 +13,6 @@ import { FiHelpCircle } from "react-icons/fi";
 import Text from "../../Atoms/Text";
 import Button from "../../Atoms/Button";
 import Link from "../../Atoms/Link";
-import { setUserData } from "../../../store/actions/userActions";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -136,7 +135,7 @@ const Sidebar = ({ open, user }) => {
             </Button>
           </Link>
           {user.roleId === 2 && (
-            <Link to="/registrar-usuario" className={classes.link}>
+            <Link to="/configuracion" className={classes.link}>
               <Button theme="flat" className={classes.button}>
                 <MdSettings className={classes.icon} />{" "}
                 <Text theme="label" className={classes.label}>

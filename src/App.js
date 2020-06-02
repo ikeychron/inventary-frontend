@@ -11,11 +11,13 @@ import { ThemeProvider } from "@material-ui/core/styles";
 
 // Pages
 import Login from "./pages/Login";
+
 import Home from "./pages/Home";
+
+import Configuration from "./pages/Configuration";
 import SignUp from "./pages/SignUp";
 
 import Inventary from "./pages/Inventary";
-import NewProduct from "./pages/NewProduct";
 import Despachar from "./pages/Despachar";
 
 import Reports from "./pages/Reports";
@@ -75,11 +77,17 @@ const App = ({ setUserAuthentication, setUserData, isAuth, user }) => {
                 <Route exact path="/" component={Home} />
 
                 {user.roleId === 2 && (
-                  <Route exact path="/registrar-usuario" component={SignUp} />
+                  <>
+                    <Route
+                      exact
+                      path="/configuracion"
+                      component={Configuration}
+                    />
+                    <Route exact path="/registrar-usuario" component={SignUp} />
+                  </>
                 )}
 
                 <Route exact path="/inventario" component={Inventary} />
-                <Route exact path="/nuevo-producto" component={NewProduct} />
                 <Route exact path="/despachar-producto" component={Despachar} />
 
                 <Route

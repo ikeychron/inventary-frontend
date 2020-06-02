@@ -33,6 +33,12 @@ export default {
       maxWidth: 350,
     },
   },
+  MuiDialogActions: {
+    root: {
+      justifyContent: "center",
+      flexDirection: "column",
+    },
+  },
   MuiInputBase: {
     input: {
       // color: palette.text.dark

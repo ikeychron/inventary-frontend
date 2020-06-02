@@ -22,6 +22,7 @@ const SignUp = () => {
   const initialValues = {
     name: "",
     last_name: "",
+    nameUser: "",
     dni: "",
     phone: "",
     sex: "",
@@ -35,26 +36,27 @@ const SignUp = () => {
     <Formik
       initialValues={initialValues}
       validationSchema={Yup.object({
+        nameUser: Yup.string().required("Este campo es requerido"),
         name: Yup.string().required("Este campo es requerido"),
         last_name: Yup.string().required("Este campo es requerido"),
         dni: Yup.string().required("Este campo es requerido"),
         phone: Yup.string().required("Este campo es requerido"),
         sex: Yup.string().required("Este campo es requerido"),
         roleId: Yup.string().required("Este campo es requerido"),
-        email: Yup.string().required("Este campo es requerido"),
         password: Yup.string().required("Este campo es requerido"),
         confirm_password: Yup.string().required("Este campo es requerido"),
       })}
       onSubmit={(values, { resetForm }) => {
+        console.log(values);
         Axios.post("http://localhost:4000/new-user", values)
           .then(({ data }) => {
-            console.log(data);
             Swal.fire({
               title: "¡Éxito!",
               text: data.message,
               icon: "success",
               confirmButtonText: "Aceptar",
             });
+            resetForm(initialValues);
           })
           .catch(({ response }) => {
             const error = response.data.error;
@@ -65,8 +67,6 @@ const SignUp = () => {
               confirmButtonText: "Aceptar",
             });
           });
-
-        resetForm(initialValues);
       }}
     >
       {({ handleChange, handleSubmit, values, errors, touched }) => (
@@ -104,6 +104,20 @@ const SignUp = () => {
                 error={touched.last_name && errors.last_name ? true : false}
                 helperText={
                   touched.last_name && errors.last_name ? errors.last_name : ""
+                }
+              />
+              <Input
+                type="text"
+                className={classes.input}
+                placeholder="Nombre de usuario"
+                inputProps={{ maxLength: 30 }}
+                name="nameUser"
+                value={values.nameUser || ""}
+                onChange={handleChange}
+                autoComplete="off"
+                error={touched.nameUser && errors.nameUser ? true : false}
+                helperText={
+                  touched.nameUser && errors.nameUser ? errors.nameUser : ""
                 }
               />
               <Input
@@ -162,7 +176,7 @@ const SignUp = () => {
               <Input
                 type="email"
                 className={classes.input}
-                placeholder="Correo"
+                placeholder="Correo (Opcional)"
                 inputProps={{ maxLength: 30 }}
                 name="email"
                 value={values.email}
@@ -207,7 +221,11 @@ const SignUp = () => {
               />
             </GridFluid>
             <div className={classes.flex}>
-              <Link to="/" className={classes.link} color="secondary">
+              <Link
+                to="/configuracion"
+                className={classes.link}
+                color="secondary"
+              >
                 Cancelar
               </Link>
               <Button color="primary" className={classes.button} type="submit">

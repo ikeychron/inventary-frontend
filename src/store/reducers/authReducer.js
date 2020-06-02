@@ -17,7 +17,6 @@ export default (state = initialState, { type, payload }) => {
       };
 
     case SET_USER:
-      console.log({ payload });
       return {
         ...state,
         user: {
