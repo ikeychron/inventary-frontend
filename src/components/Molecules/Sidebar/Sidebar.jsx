@@ -88,7 +88,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Sidebar = ({ open, user }) => {
+const Sidebar = ({ open }) => {
   const classes = useStyles();
 
   return (
@@ -102,10 +102,10 @@ const Sidebar = ({ open, user }) => {
           <div className={classes.tabHeader}>
             <div className={classes.div}>
               <Text theme="title" component="h6" className={classes.title}>
-                {`${user.name} ${user.last_name}`}
+                Juan Barrios
               </Text>
               <Text theme="label" className={classes.subtitle}>
-                {user.email}
+                correo@gmail.com
               </Text>
             </div>
           </div>
@@ -118,6 +118,7 @@ const Sidebar = ({ open, user }) => {
               </Text>
             </Button>
           </Link>
+
           <Link to="/inventario" className={classes.link}>
             <Button theme="flat" className={classes.button}>
               <GiMedicines className={classes.icon} />{" "}
@@ -134,16 +135,16 @@ const Sidebar = ({ open, user }) => {
               </Text>
             </Button>
           </Link>
-          {user.roleId === 2 && (
-            <Link to="/configuracion" className={classes.link}>
-              <Button theme="flat" className={classes.button}>
-                <MdSettings className={classes.icon} />{" "}
-                <Text theme="label" className={classes.label}>
-                  Configuración
-                </Text>
-              </Button>
-            </Link>
-          )}
+
+          <Link to="/configuracion" className={classes.link}>
+            <Button theme="flat" className={classes.button}>
+              <MdSettings className={classes.icon} />{" "}
+              <Text theme="label" className={classes.label}>
+                Configuración
+              </Text>
+            </Button>
+          </Link>
+
           <Link to="/soporte" className={classes.link}>
             <Button theme="flat" className={classes.button}>
               <FiHelpCircle className={classes.icon} />{" "}

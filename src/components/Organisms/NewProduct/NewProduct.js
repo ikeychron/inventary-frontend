@@ -46,33 +46,7 @@ const NewProduct = ({ open, handleClose, getProducts }) => {
         categoryProductId: Yup.string().required("Este campo es requerido"),
       })}
       onSubmit={(values, { resetForm }) => {
-        Axios.post("http://localhost:4000/new-product", values)
-          .then(({ data }) => {
-            const { success, message } = data;
-
-            if (success) {
-              Swal.fire({
-                title: "¡Producto creado!",
-                text: message,
-                icon: "success",
-                confirmButtonText: "Aceptar",
-              });
-              setError("");
-              getProducts();
-              resetForm(initialValues);
-              handleClose();
-            } else {
-              setError("Oops, algo salió mal");
-            }
-          })
-          .catch(({ response }) => {
-            if (response.data.error) {
-              const error = response.data.error;
-              setError(
-                typeof error.msg === "object" ? error[0].msg : error.msg
-              );
-            }
-          });
+        console.log(values);
       }}
     >
       {({ handleChange, handleSubmit, values, errors, touched }) => (

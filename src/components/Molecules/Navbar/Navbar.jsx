@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
 // Actions
 import { openSidebar } from "../../../store/actions/layoutActions";
@@ -10,12 +11,6 @@ import { FiMenu } from "react-icons/fi";
 // Components
 import Link from "../../Atoms/Link";
 import Button from "../../Atoms/Button";
-
-// Actions
-import {
-  setUserAuthentication,
-  setUserData,
-} from "../../../store/actions/userActions";
 
 // styles
 import { makeStyles } from "@material-ui/core/styles";
@@ -38,14 +33,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Navbar = ({ openSidebar, setUserAuthentication, setUserData }) => {
+const Navbar = ({ openSidebar, history }) => {
   const classes = useStyles();
-
-  const handleOutLog = () => {
-    setUserAuthentication(false, "");
-    setUserData({});
-    localStorage.removeItem("token");
-  };
 
   return (
     <div className={classes.root}>
@@ -68,7 +57,7 @@ const Navbar = ({ openSidebar, setUserAuthentication, setUserData }) => {
           <Link to="/" className={classes.title}>
             Sistema de manejo de Inventario e Historias Médicas
           </Link>
-          <Button theme="flat" onClick={handleOutLog}>
+          <Button theme="flat" onClick={() => history.push("/")}>
             Cerrar Sesión
           </Button>
         </Toolbar>
@@ -79,8 +68,6 @@ const Navbar = ({ openSidebar, setUserAuthentication, setUserData }) => {
 
 const mapDispatchToProps = {
   openSidebar,
-  setUserAuthentication,
-  setUserData,
 };
 
-export default connect(null, mapDispatchToProps)(Navbar);
+export default withRouter(connect(null, mapDispatchToProps)(Navbar));

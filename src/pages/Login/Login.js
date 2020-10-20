@@ -16,9 +16,13 @@ const Login = () => {
   return (
     <div className={classes.container}>
       <div className={classes.divForm}>
-        <img src={imgProfile} className={classes.img} alt="Perfil" />
-        <Text component="h1" theme="title" className={classes.title}>
-          Bienvenido
+        <Text
+          component="h1"
+          theme="title"
+          align="center"
+          className={classes.title}
+        >
+          Guanare Market Dashboard
         </Text>
         <LoginForm />
       </div>

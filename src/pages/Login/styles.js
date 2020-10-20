@@ -16,7 +16,7 @@ export default makeStyles((Theme) => ({
     },
   },
   divForm: {
-    width: "500px",
+    width: "575px",
     height: "100%",
     display: "flex",
     flexDirection: "column",
